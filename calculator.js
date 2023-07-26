@@ -1,3 +1,8 @@
+const OPERATORS = ["+", "-", "*", "/"];
+let firstNumber;
+let secondNumber;
+let operator;
+
 function add(a, b) {
     return a + b;
 }
