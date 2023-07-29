@@ -29,6 +29,7 @@ function operate(a, b, operator) {
 }
 
 function updateDisplay(newDisplay) {
+    if (newDisplay.length > 8) return;
     const display = document.getElementById("display");
     display.textContent = newDisplay;
 }
