@@ -48,7 +48,7 @@ button {
     gap: 10px;
 }
 
-.operator {
+.operator, #sign-swap {
     background-color: #60dd90;
 }
 
@@ -59,4 +59,8 @@ button {
 
 #clear, #backspace {
     background-color: #ee6030;
+}
+
+.pressed {
+    background-color: #30aa60;
 }
