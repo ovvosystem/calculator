@@ -9,10 +9,13 @@ console.log(calcButtons);
 calcButtons.forEach(button => {
     button.addEventListener("click", event => {
         const buttonPressed = event.currentTarget;
-        if (buttonPressed.classList.contains("number") || buttonPressed.id === "point") {
-            displayNumber += button.textContent;
-            updateDisplay(displayNumber);
+        if (buttonPressed.classList.contains("number")) {
+            if (displayNumber == "0") displayNumber = button.textContent;
+            else displayNumber += button.textContent;
+        } else if (buttonPressed.id === "point") {
+            if (!displayNumber.includes(".")) displayNumber += button.textContent;
         }
+        updateDisplay(displayNumber);
     })
 })
 
