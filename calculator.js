@@ -16,6 +16,10 @@ calcButtons.forEach(button => {
             pressPoint(buttonPressed);
         }
 
+        else if (buttonPressed.classList.contains("operator")) {
+            pressOperator(buttonPressed);
+        }
+
         updateDisplay(displayNumber);
     })
 })
@@ -44,4 +48,13 @@ function pressNumber(button) {
 
 function pressPoint(button) {
     if (!displayNumber.includes(".")) displayNumber += button.textContent;
+}
+
+function pressOperator(button) {
+    if (!operator) {
+        firstNumber = displayNumber;
+        displayNumber = "0";
+        operator = button.id;
+        button.classList.add("pressed");
+    }
 }
