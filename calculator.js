@@ -20,6 +20,10 @@ calcButtons.forEach(button => {
             pressOperator(buttonPressed);
         }
 
+        else if (buttonPressed.id === "equals") {
+            pressEquals(buttonPressed);
+        }
+
         updateDisplay(displayNumber);
     })
 })
@@ -57,4 +61,17 @@ function pressOperator(button) {
         operator = button.id;
         button.classList.add("pressed");
     }
+}
+
+function pressEquals(button) {
+    if (!operator) return;
+    secondNumber = displayNumber;
+    const result = operate(firstNumber, secondNumber, operator);
+    operator = null;
+    firstNumber = result;
+    displayNumber = result;
+
+    calcButtons.forEach(button => {
+        button.classList.remove("pressed");
+    })
 }
