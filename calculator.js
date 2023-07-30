@@ -8,6 +8,8 @@ calcButtons.forEach(button => {
     button.addEventListener("click", event => {
         const buttonPressed = event.currentTarget;
 
+        if (displayNumber === "ERROR") displayNumber = "0";
+
         if (buttonPressed.classList.contains("number"))
             pressNumber(buttonPressed);
 
@@ -40,7 +42,10 @@ function operate(a, b, operator) {
         case "sum": return a + b;
         case "subtract": return a - b;
         case "multiply": return a * b;
-        case "divide": return a / b;
+        case "divide": {
+            if (b == 0) return "ERROR";
+            return a / b;
+        }
     }
 }
 
