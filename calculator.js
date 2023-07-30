@@ -45,7 +45,7 @@ function operate(a, b, operator) {
 }
 
 function updateDisplay() {
-    if (!displayNumber) displayNumber = "0";
+    if (!displayNumber || displayNumber === "-") displayNumber = "0";
     if (displayNumber.length > 8) displayNumber = displayNumber.slice(0, 8);
     const display = document.getElementById("display");
     display.textContent = displayNumber;
