@@ -44,11 +44,11 @@ function operate(a, b, operator) {
     }
 }
 
-function updateDisplay(newDisplay) {
-    if (!newDisplay) newDisplay = "0";
-    if (newDisplay.length > 8) return;
+function updateDisplay() {
+    if (!displayNumber) displayNumber = "0";
+    if (displayNumber.length > 8) displayNumber = displayNumber.slice(0, 8);
     const display = document.getElementById("display");
-    display.textContent = newDisplay;
+    display.textContent = displayNumber;
 }
 
 function pressNumber(button) {
@@ -72,7 +72,7 @@ function pressOperator(button) {
 function pressEquals(button) {
     if (!operator) return;
     secondNumber = displayNumber;
-    const result = operate(firstNumber, secondNumber, operator);
+    const result = `${operate(firstNumber, secondNumber, operator)}`;
     operator = null;
     firstNumber = result;
     displayNumber = result;
