@@ -23,6 +23,9 @@ calcButtons.forEach(button => {
         else if (buttonPressed.id === "clear")
             pressClear();
 
+        else if (buttonPressed.id === "backspace")
+            pressBackspace();
+
         updateDisplay(displayNumber);
     })
 })
@@ -39,6 +42,7 @@ function operate(a, b, operator) {
 }
 
 function updateDisplay(newDisplay) {
+    if (!newDisplay) newDisplay = "0";
     if (newDisplay.length > 8) return;
     const display = document.getElementById("display");
     display.textContent = newDisplay;
@@ -80,8 +84,12 @@ function pressClear() {
     firstNumber = null;
     secondNumber = null;
     operator = null;
-    
+
     calcButtons.forEach(button => {
         button.classList.remove("pressed");
     })
+}
+
+function pressBackspace() {
+    displayNumber = displayNumber.slice(0, -1);
 }
