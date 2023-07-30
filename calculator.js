@@ -26,6 +26,9 @@ calcButtons.forEach(button => {
         else if (buttonPressed.id === "backspace")
             pressBackspace();
 
+        else if (buttonPressed.id === "sign-swap")
+            pressSignswap();
+
         updateDisplay(displayNumber);
     })
 })
@@ -92,4 +95,8 @@ function pressClear() {
 
 function pressBackspace() {
     displayNumber = displayNumber.slice(0, -1);
+}
+
+function pressSignswap() {
+    displayNumber = `${displayNumber * -1}`;
 }
