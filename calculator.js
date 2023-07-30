@@ -8,21 +8,20 @@ calcButtons.forEach(button => {
     button.addEventListener("click", event => {
         const buttonPressed = event.currentTarget;
 
-        if (buttonPressed.classList.contains("number")) {
+        if (buttonPressed.classList.contains("number"))
             pressNumber(buttonPressed);
-        }
 
-        else if (buttonPressed.id === "point") {
+        else if (buttonPressed.id === "point")
             pressPoint(buttonPressed);
-        }
 
-        else if (buttonPressed.classList.contains("operator")) {
+        else if (buttonPressed.classList.contains("operator"))
             pressOperator(buttonPressed);
-        }
 
-        else if (buttonPressed.id === "equals") {
+        else if (buttonPressed.id === "equals")
             pressEquals(buttonPressed);
-        }
+
+        else if (buttonPressed.id === "clear")
+            pressClear();
 
         updateDisplay(displayNumber);
     })
@@ -71,6 +70,17 @@ function pressEquals(button) {
     firstNumber = result;
     displayNumber = result;
 
+    calcButtons.forEach(button => {
+        button.classList.remove("pressed");
+    })
+}
+
+function pressClear() {
+    displayNumber = "0";
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
+    
     calcButtons.forEach(button => {
         button.classList.remove("pressed");
     })
